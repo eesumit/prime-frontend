@@ -12,12 +12,16 @@ import Profile from './pages/Profile';
 
 // Wrapper to access auth context for redirects
 const AppRoutes = () => {
-    const { isAuthenticated, loading } = useAuth();
+    const { isAuthenticated, loading, user } = useAuth();
+
+    // Debug log to troubleshoot blank page
+    console.log('App State:', { isAuthenticated, loading, user });
 
     if (loading) {
         return (
             <div className="min-h-screen flex items-center justify-center">
                 <div className="spinner"></div>
+                <p className="ml-4 text-gray-500">Loading application...</p>
             </div>
         );
     }
